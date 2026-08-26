@@ -1,0 +1,30 @@
+ 
+ To add backup routes in the server.
+ 
+ 
+ 16:26:07 nslookup dolnxprodvm1710-bk.hq.emirates.com.
+
+   46  25/10/25 16:27:52 sudo cd /etc/sysconfig/network-scripts
+   47  25/10/25 16:28:00 cd /etc/sysconfig/network-scripts
+   48  25/10/25 16:28:04 ls -lhrt
+   49  25/10/25 16:29:10 sudo vi route-ens224    [ u need to add the routes given by the backup team and also should be in exact form as added before ]
+   54  25/10/25 16:33:29 sudo cat route-ens224
+   55  25/10/25 16:34:32 sudo ifdown ens224
+   56  25/10/25 16:34:43 sudo ifup ens224
+   57  25/10/25 16:34:56 ifconfig -a
+   59  25/10/25 16:35:07 route -n
+
+
+for all the servers, we have 3 interfaces -> ip s a | ipconfig -a
+
+1 is used for backup
+1 interface is used for applications
+3rd is used for connection between HQ and DO servers.
+
+
+Amit Choudhary (EXT):  The mentioned backup route was already there, status pasted below:
+
+@doliorsv047 ~]$ sudo netstat -nr | grep 10.20.219.162
+10.20.219.162   10.184.192.1    255.255.255.255 UGH       0 0          0 ens224
+
+
